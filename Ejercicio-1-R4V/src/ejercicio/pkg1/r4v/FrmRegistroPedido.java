@@ -55,8 +55,16 @@ public class FrmRegistroPedido extends JFrame {
     private String [] platillos={"Pasta de Bits con ASCII","Pasta de Bytes ISO","Carne de Motherboard","Costillas de Ram","Asado de Sectores","Sanwich MSDOS","Pizza de estado solido","Pizza magnetica 7200rpm"};
     private double[] precioPlatillos={30.75,20.50,99.50,60.50,120.50,20.50,50.75,50.75};
      
+    // Bebeidas
+    private JLabel lblBebidas;
+    private JLabel lblBebebidasSubTotal;
+    private JList<String> lstBebidas;
+    private JPanel pnlBebidas;
+    private String [] Bebidas={"Bebidas Dos","Agua de CPU","Refresco F5","MyDoom Cola","WannaCry en las rocas","Troyano Up","Ninguna (Solo Platillo)"};
+    private double[] precioBebidas={25.00,10.00,15.00,25.00,15.00,45.00,30.00};
+     
     
-    // Label Grzande
+    // Label Grande
     private JLabel lblInstruccionesTitulo;
     private JLabel lblInstruccionesDetalle;
     private JPanel pnlInstrucciones;
@@ -201,6 +209,49 @@ public class FrmRegistroPedido extends JFrame {
         return lstPlatillos;
     }
 
+    public JLabel getLblBebidas() {
+        if (lblBebidas== null) {
+            lblBebidas = new JLabel("Bebidas:");
+        }
+        return lblBebidas;
+    }
+
+    public JLabel getLblBebebidasSubTotal() {
+        if (lblBebebidasSubTotal==null) {
+            lblBebebidasSubTotal = new JLabel("Sub:");
+        }
+        return lblBebebidasSubTotal;
+    }
+    public JList<String> getLstBebidas() {
+        if(lstBebidas == null){
+            lstBebidas =new JList<>(Bebidas);
+            lstBebidas.addListSelectionListener((ListSelectionEvent e) -> {
+                if(!e.getValueIsAdjusting()){
+                    totalBebidas= precioBebidas[lstBebidas.getSelectedIndex()];
+                    getLblBebebidasSubTotal().setText("Subtotal  "+ totalBebidas);
+                    getLblGranTotal().setText("Total $" + (totalPlatillos + totalBebidas));
+                    
+                }
+            });
+        }
+        return lstBebidas;
+    }
+    
+    public JPanel getPnlBebidas() {
+        if (pnlBebidas==null) {
+            pnlBebidas=new JPanel();
+            pnlBebidas.setLayout(new BoxLayout(pnlBebidas, BoxLayout.Y_AXIS));
+            pnlBebidas.add(getLblBebidas());
+            pnlBebidas.add(getLstBebidas());
+            pnlBebidas.add(getLblBebebidasSubTotal());
+        }
+        return pnlBebidas;
+    }
+
+    public String[] getBebidas() {
+        return Bebidas;
+    }
+
     public JLabel getlblPlatillos() {
         if(lblPlatillos == null){
             lblPlatillos =new JLabel("Platillos:"); 
@@ -308,6 +359,12 @@ public class FrmRegistroPedido extends JFrame {
             constraints.gridx=1;
             constraints.gridy=1;
             pnlContenido.add(getPnlPlatillos(), constraints);
+            
+            constraints = new GridBagConstraints();
+            //pnlContenido.add(getLblFecha(), constraints);
+            constraints.gridx=2;
+            constraints.gridy=1;
+            pnlContenido.add(getPnlBebidas(), constraints);
             
             // 
             constraints = new GridBagConstraints();
