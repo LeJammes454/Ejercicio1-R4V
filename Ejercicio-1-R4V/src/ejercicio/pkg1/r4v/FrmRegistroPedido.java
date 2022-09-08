@@ -39,9 +39,10 @@ public class FrmRegistroPedido extends JFrame {
     // U2
     private JLabel lblFechaLabel;
     private JLabel lblFecha;
+
+    
+    //Mesas
     private JLabel lblMesas;
-    
-    
     private JList<String> lstMesas;
     private JPanel pnlMesas;
     private String [] mesas={"Mesa 1","Mesa 2","Mesa 3","Mesa 4","Mesa Terraza 1","Mesa terraza 2","Mesa VIP"};
@@ -63,6 +64,13 @@ public class FrmRegistroPedido extends JFrame {
     private String [] Bebidas={"Bebidas Dos","Agua de CPU","Refresco F5","MyDoom Cola","WannaCry en las rocas","Troyano Up","Ninguna (Solo Platillo)"};
     private double[] precioBebidas={25.00,10.00,15.00,25.00,15.00,45.00,30.00};
      
+    
+    //Mesas
+    private JLabel lblFormasPago;
+    private JList<String> lstFormasPago;
+    private JPanel pnlFormasPago;
+    private String [] FormasPago={"Bitcoin","Lifecoin","Quark","Peercoin","Dogecoin","Pejecoins","Wilicoins"};
+   
     
     // Label Grande
     private JLabel lblInstruccionesTitulo;
@@ -222,6 +230,7 @@ public class FrmRegistroPedido extends JFrame {
         }
         return lblBebebidasSubTotal;
     }
+    
     public JList<String> getLstBebidas() {
         if(lstBebidas == null){
             lstBebidas =new JList<>(Bebidas);
@@ -349,33 +358,32 @@ public class FrmRegistroPedido extends JFrame {
             pnlContenido.add(getLblFecha(), constraints);
             
             constraints = new GridBagConstraints();
-            //pnlContenido.add(getLblFecha(), constraints);
             constraints.gridx=0;
             constraints.gridy=1;
             pnlContenido.add(getPnlMesas(), constraints);
             
             constraints = new GridBagConstraints();
-            //pnlContenido.add(getLblFecha(), constraints);
             constraints.gridx=1;
             constraints.gridy=1;
             pnlContenido.add(getPnlPlatillos(), constraints);
             
             constraints = new GridBagConstraints();
-            //pnlContenido.add(getLblFecha(), constraints);
             constraints.gridx=2;
             constraints.gridy=1;
             pnlContenido.add(getPnlBebidas(), constraints);
             
-            // 
             constraints = new GridBagConstraints();
-            //pnlContenido.add(getLblFecha(), constraints);
+            constraints.gridx=4;
+            constraints.gridy=1;
+            pnlContenido.add(getPnlFormasPago(), constraints);
+            
+            constraints = new GridBagConstraints();
             constraints.gridx=0;
             constraints.gridy=2;
             constraints.gridwidth=2;
             pnlContenido.add(getPnlInstrucciones(), constraints);
 
             constraints = new GridBagConstraints();
-            //pnlContenido.add(getLblFecha(), constraints);
             constraints.gridx=2;
             constraints.gridy=2;
             constraints.gridwidth=2;
@@ -383,6 +391,33 @@ public class FrmRegistroPedido extends JFrame {
            
         }
         return pnlContenido;
+    }
+    
+    public JList<String> getLstFormasPago() {
+        if(lstFormasPago == null){
+            lstFormasPago =new JList<>(FormasPago);
+        }
+        return lstFormasPago;
+    }
+    
+    public JLabel getlblFormasPago() {
+        
+        if(lblFormasPago == null){
+            lblFormasPago =new JLabel("Formas de Pago:"); 
+        }
+        return lblFormasPago;
+    }
+    
+    public JPanel getPnlFormasPago(){
+        if (pnlFormasPago==null) {
+            pnlFormasPago=new JPanel();
+            pnlFormasPago.setLayout(new BoxLayout(pnlFormasPago, BoxLayout.Y_AXIS));
+            
+            //Agregar widgets al panel 
+            pnlFormasPago.add(getlblFormasPago());
+            pnlFormasPago.add(getLstFormasPago());
+        }
+    return pnlFormasPago;
     }
     
     public FrmRegistroPedido() {
