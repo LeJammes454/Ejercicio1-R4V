@@ -111,9 +111,7 @@ public class FrmRegistroPedido extends JFrame {
         }
         return pnlInstrucciones;
     }
-    
-
-    // Contenido principal
+   
     public JLabel getLblFechaLabel(){
         if(lblFechaLabel == null){
             lblFechaLabel =new JLabel();
