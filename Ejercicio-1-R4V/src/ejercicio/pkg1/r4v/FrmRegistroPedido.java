@@ -52,8 +52,8 @@ public class FrmRegistroPedido extends JFrame {
     private JLabel lblPlatillosSubTotal;
     private JList<String> lstPlatillos;
     private JPanel pnlPlatillos;
-    private String [] platillos={"Puerquito","Pollito","Vaquita","Guajolotito","Aguilita","Torito","Largatijita","Pechuga","Bisteg"};
-    private double[] precioPlatillos={10,20,30,40,50,60,70,80,90};
+    private String [] platillos={"Pasta de Bits con ASCII","Pasta de Bytes ISO","Carne de Motherboard","Costillas de Ram","Asado de Sectores","Sanwich MSDOS","Pizza de estado solido","Pizza magnetica 7200rpm"};
+    private double[] precioPlatillos={30.75,20.50,99.50,60.50,120.50,20.50,50.75,50.75};
      
     
     // Label Grzande
