@@ -140,11 +140,46 @@ public class FrmRegistroPedido extends JFrame {
         }).start();
         return lblFecha;
     }
+    
+    public JPanel getPnlTitulo() {
+        if(pnlTitulo == null){
+            pnlTitulo=new JPanel();
+            //pnlTitulo.setBounds(0, 0, 200, 100);            
+            pnlTitulo.setBackground(new java.awt.Color(111, 183, 169));
+            pnlTitulo.setLayout(new BoxLayout(pnlTitulo, BoxLayout.Y_AXIS));
+            pnlTitulo.add(getLblTitulo());            
+            pnlTitulo.add(getLblSubTitulo());
+        }
+        return pnlTitulo;
+    }
 
-    //--Panel de mesas
-    //--Panel de platillos
-    //--Panel de mesas
-    //--Panel de mesas
+    public JLabel getLblTitulo() {
+        if(lblTitulo == null){
+            lblTitulo =new JLabel();
+            lblTitulo.setText("R4V");            
+            lblTitulo.setFont(new Font("Arial", Font.ITALIC, 30));
+            lblTitulo.setBackground(Color.RED);
+            lblTitulo.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            // agregar componentes hijo
+           
+            
+        }
+        return lblTitulo;
+    }
+
+    public JLabel getLblSubTitulo() {
+        if(lblSubTitulo == null){
+            lblSubTitulo =new JLabel();
+            lblSubTitulo.setText("Restuarant For Virus");            
+            lblSubTitulo.setFont(new Font("Arial", Font.ITALIC, 15));
+            lblSubTitulo.setBackground(Color.RED);
+            lblSubTitulo.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            // agregar componentes hijo
+            
+            
+        }
+        return lblSubTitulo;
+    }
 
     public JList<String> getLstMesas() {
         if(lstMesas == null){
@@ -202,8 +237,6 @@ public class FrmRegistroPedido extends JFrame {
         }
         return lblMesas;
     }
-
-    
     
     public JPanel getPnlMesas(){
         if (pnlMesas==null) {
@@ -244,12 +277,10 @@ public class FrmRegistroPedido extends JFrame {
         return pnlTotalRegistro;
     }
     
-    
-    
     public JPanel getPnlContenido() {
         if(pnlContenido == null){
             pnlContenido=new JPanel();         
-            pnlContenido.setBackground(Color.YELLOW);
+            pnlContenido.setBackground(new java.awt.Color(186, 222, 215));
             pnlContenido.setLayout(new GridBagLayout());
             
             //Agregar widgets al panel contenedor
@@ -298,56 +329,7 @@ public class FrmRegistroPedido extends JFrame {
         }
         return pnlContenido;
     }
-
     
-    
-    
-    
-    
-    //Contenido Titulo
-
-    public JPanel getPnlTitulo() {
-        if(pnlTitulo == null){
-            pnlTitulo=new JPanel();
-            //pnlTitulo.setBounds(0, 0, 200, 100);            
-            pnlTitulo.setBackground(Color.RED);
-            pnlTitulo.setLayout(new BoxLayout(pnlTitulo, BoxLayout.Y_AXIS));
-            pnlTitulo.add(getLblTitulo());            
-            pnlTitulo.add(getLblSubTitulo());
-        }
-        return pnlTitulo;
-    }
-
-    public JLabel getLblTitulo() {
-        if(lblTitulo == null){
-            lblTitulo =new JLabel();
-            lblTitulo.setText("R4V");            
-            lblTitulo.setFont(new Font("Impact", Font.BOLD, 30));
-            lblTitulo.setBackground(Color.RED);
-            lblTitulo.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-            // agregar componentes hijo
-           
-            
-        }
-        return lblTitulo;
-    }
-
-    public JLabel getLblSubTitulo() {
-        if(lblSubTitulo == null){
-            lblSubTitulo =new JLabel();
-            lblSubTitulo.setText("Aqui estoy");            
-            lblSubTitulo.setFont(new Font("Impact", Font.BOLD, 15));
-            lblSubTitulo.setBackground(Color.RED);
-            lblSubTitulo.setAlignmentX(JComponent.CENTER_ALIGNMENT);
-            // agregar componentes hijo
-            
-            
-        }
-        return lblSubTitulo;
-    }
-    
-    
-
     public FrmRegistroPedido() {
         this.setBounds(0, 0, 800, 600);
         this.setTitle("Registro de pedido");
@@ -367,6 +349,7 @@ public class FrmRegistroPedido extends JFrame {
         
         
     }
+    
     
     
 }
