@@ -27,6 +27,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 
 /**
@@ -327,11 +328,12 @@ public class FrmRegistroPedido extends JFrame {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     String mensaje = 
-                            "------------------- DETALLES DE LA COMPRA ------------------- \n"+
-                            getLstMesas().getSelectedValue() + "\n"+
-                            getLstPlatillos().getSelectedValue() + "\n"+
-                            getLstBebidas().getSelectedValue() + "\n"+
-                            getLstFormasPago().getSelectedValue();
+                            "------------------- El pepdio ha sido registrado exitosamente ------------------- \n"+
+                            "Mesa: "+getLstMesas().getSelectedValue() + "\n"+
+                            "Platillo: "+getLstPlatillos().getSelectedValue() + "\n"+
+                            "Bebida: "+getLstBebidas().getSelectedValue() + "\n"+
+                            "Forma de Pago: "+getLstFormasPago().getSelectedValue() + "\n"+
+                            "Total de la compa: $"+(totalBebidas + totalPlatillos) ;
                     JOptionPane.showMessageDialog(null, mensaje);
                 }
             
@@ -347,6 +349,7 @@ public class FrmRegistroPedido extends JFrame {
             pnlTotalRegistro.setLayout(new BoxLayout(pnlTotalRegistro, BoxLayout.Y_AXIS));
             pnlTotalRegistro.add(getLblGranTotal());
             pnlTotalRegistro.add(getBtnRegistrarPedido());
+            pnlTotalRegistro.setBorder(new EmptyBorder(20, 20, 20, 20));
         }
         return pnlTotalRegistro;
     }
@@ -452,7 +455,5 @@ public class FrmRegistroPedido extends JFrame {
         
         
     }
-    
-    
     
 }
