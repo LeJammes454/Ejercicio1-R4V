@@ -12,6 +12,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.BorderFactory;
@@ -22,6 +24,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.event.ListSelectionEvent;
@@ -320,6 +323,19 @@ public class FrmRegistroPedido extends JFrame {
     public JButton getBtnRegistrarPedido() {
         if (btnRegistrarPedido == null) {
             btnRegistrarPedido = new JButton("Registrar pedido");
+            btnRegistrarPedido.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    String mensaje = 
+                            "------------------- DETALLES DE LA COMPRA ------------------- \n"+
+                            getLstMesas().getSelectedValue() + "\n"+
+                            getLstPlatillos().getSelectedValue() + "\n"+
+                            getLstBebidas().getSelectedValue() + "\n"+
+                            getLstFormasPago().getSelectedValue();
+                    JOptionPane.showMessageDialog(null, mensaje);
+                }
+            
+            });
         }
         return btnRegistrarPedido;
         
@@ -348,11 +364,8 @@ public class FrmRegistroPedido extends JFrame {
             constraints.gridx=0;
             constraints.gridy=0;
             pnlContenido.add(getLblFechaLabel(), constraints);
-            
-            //
            
             constraints = new GridBagConstraints();
-            //pnlContenido.add(getLblFecha(), constraints);
             constraints.gridx=1;
             constraints.gridy=0;
             pnlContenido.add(getLblFecha(), constraints);
